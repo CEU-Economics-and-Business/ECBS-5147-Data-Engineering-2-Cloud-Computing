@@ -18,10 +18,10 @@ layout: default
 ### Serverless Solutions in the Cloud
 
 ### Introduction
-Data on the web is growing exponentially. All of us today use Google as our first source of knowledge – be it about finding reviews about a place to understanding a new term. All the data that you need is already available on the internet – the only thing limiting you from using it is the ability to access it. However, most of the data available over the web is not readily available. It is present in an unstructured format (HTML format) and is not downloadable. Therefore, it requires knowledge & expertise to use this data to eventually build a useful model.
+Data on the web is growing exponentially. All of us today use Google as our first source of knowledge – be it about finding reviews about a place to understanding a new term. All the data that you need is already available on the internet – the only thing limiting you from using it is the ability to access it. However, most of the data available on the web is not readily available. It is present in an unstructured format (HTML format) and is not downloadable. Therefore, it requires knowledge & expertise to use this data to eventually build a useful model.
 
 #### Web Scraping
-Web scraping is a technique for converting the data present in unstructured format (HTML tags) over the web to the structured format which can easily be accessed and used.
+Web scraping is a technique for converting the data present in an unstructured format (HTML tags) over the web to the structured format which can easily be accessed and used.
 
 #### How to Scrape?
 **There are several ways of scraping data from the web. Some of the popular ways are:**
@@ -52,7 +52,7 @@ cast
 ![scrapedemo1](Images/Serverless/cast.png)
 
 ### rvest
-- rvest is package that makes it easy to scrape data from html web pages, inspired by libraries like beautifulsoup (bs4). You can express complex operations as elegant pipelines composed of simple, easily understood pieces. rvest is built upon the xml2 package and also accept config from the httr package. For the most part, we only need rvest. However, we need httr if we want to add extra configurations.
+- rvest is a package that makes it easy to scrape data from html web pages, inspired by libraries like beautifulsoup (bs4). You can express complex operations as elegant pipelines composed of simple, easily understood pieces. rvest is built upon the xml2 package and also accept config from the httr package. For the most part, we only need rvest. However, we need httr if we want to add extra configurations.
 
 **Make sure you have this package installed**
 ```r
@@ -63,7 +63,7 @@ install.packages("rvest")
 install.packages("httr")
 ```
 
-- We will be using an open source software named Selector Gadget which will be more than sufficient for anyone in order to perform Web scraping. You can access and **download the Selector Gadget extension** [here](https://selectorgadget.com/). Make sure that you have this extension installed by following the instructions from the website. 
+- We will be using an open-source software named Selector Gadget which will be more than sufficient for anyone in order to perform Web scraping. You can access and **download the Selector Gadget extension** [here](https://selectorgadget.com/). Make sure that you have this extension installed by following the instructions from the website. 
 
 >Using this you can select the parts of any website and get the relevant tags to get access to that part by simply clicking on that part of the website. Note that, this is a way around to actually learning HTML & CSS and doing it manually. But to master the art of Web scraping, I’ll highly recommend you to learn HTML & CSS in order to better understand and appreciate what’s happening under the hood.
 
@@ -74,7 +74,7 @@ install.packages("httr")
 #Loading the rvest package
 library(rvest)
 
-#Specifying the url for desired website to be scraped
+#Specifying the url for the desired website to be scraped
 url <- 'https://www.imdb.com/search/title/?count=100&release_date=1994,1994&title_type=feature'
 
 #Reading the HTML code from the website
@@ -96,10 +96,10 @@ webpage <- read_html(url)
 
 https://www.imdb.com/robots.txt
 
-Good bots comply to the rules set by websites in their robots.txt file and follow best practices while crawling and scraping. 
+Good bots comply with the rules set by websites in their robots.txt file and follow best practices while crawling and scraping. 
 
 #### STEP 1: Scraping the Rank field
-For that, we’ll use the selector Google Chrome extension gadget that you've downloaded already to get the specific CSS selectors that encloses the rankings. You can click on the extension in your browser and select the rankings field with the cursor. 
+For that, we’ll use the selector Google Chrome extension gadget that you've downloaded already to get the specific CSS selectors that enclose the rankings. You can click on the extension in your browser and select the rankings field with the cursor. 
 
 Make sure that all the rankings are selected. You can select some more ranking sections in case you are not able to get all of them and you can also de-select them by clicking on the selected section to make sure that you only have those sections highlighted that you want to scrape for that go.
 
@@ -219,7 +219,7 @@ rating_data <- html_text(rating_data_html)
 #Data-Preprocessing: converting ratings to numerical
 rating_data<-as.numeric(rating_data)
 
-#Let's have another look at the ratings data
+#Let's have another look at the rating data
 head(rating_data)
 
 ```
@@ -311,7 +311,7 @@ Amazon Polly is a cloud service that converts text into lifelike speech. You can
 
  - **Cost-effective**; Amazon Polly's pay-per-use model means there are no setup costs. You can start small and scale up as your application grows.
 
- - **Cloud-based solution**; On-device TTS solutions require significant computing resources, notably CPU power, RAM, and disk space. These can result in higher development costs and higher power consumption on devices such as tablets, smart phones, and so on. In contrast, TTS conversion done in the AWS Cloud dramatically reduces local resource requirements. This enables support of all the available languages and voices at the best possible quality. Moreover, speech improvements are instantly available to all end-users and do not require additional updates for devices.
+ - **Cloud-based solution**; On-device TTS solutions require significant computing resources, notably CPU power, RAM, and disk space. These can result in higher development costs and higher power consumption on devices such as tablets, smartphones, and so on. In contrast, TTS conversion done in the AWS Cloud dramatically reduces local resource requirements. This enables support of all the available languages and voices at the best possible quality. Moreover, speech improvements are instantly available to all end-users and do not require additional updates for devices.
 
 **Install Polly:**
 aws.polly is a package for Polly, an Amazon Web Services speech synthesis (computer voice) web service.
@@ -366,7 +366,7 @@ play(vec)
 
 ![comprehend](Images/Serverless/comprehend.png)
 
->Amazon Comprehend uses a pre-trained model to examine and analyze a document or set of documents to gather insights about it. This model is continuously trained on a large body of text so that there is no need for you to provide training data.
+>Amazon Comprehend uses a pre-trained model to examine and analyze a document or set of documents to gather insights about it. This model is continuously trained on a large body of the text so that there is no need for you to provide training data.
 
 Amazon Comprehend uses natural language processing \(NLP\) to extract insights about the content of documents\. Amazon Comprehend processes any text file in UTF\-8 format\. It develops insights by recognizing the entities, key phrases, language, sentiments, and other common elements in a document\. Use Amazon Comprehend to create new products based on understanding the structure of documents\. For example, using Amazon Comprehend you can search social networking feeds for mentions of products or scan an entire document repository for key phrases\.
 
@@ -376,7 +376,7 @@ You work with one or more documents at a time to evaluate their content and gain
 + **Key phrases** – Amazon Comprehend extracts key phrases that appear in a document\. For example, a document about a basketball game might return the names of the teams, the name of the venue, and the final score\. 
 + **Language** – Amazon Comprehend identifies the dominant language in a document\. Amazon Comprehend can identify 100 languages\. 
 + **Sentiment** – Amazon Comprehend determines the emotional sentiment of a document\. Sentiment can be positive, neutral, negative, or mixed\. 
-+ **Syntax** – Amazon Comprehend parses each word in your document and determines the part of speech for the word\. For example, in the sentence "It is raining today is Seattle," "it" is identified as a pronoun, "raining" is identified as a verb, and "Seattle" is identified as a proper noun\. 
++ **Syntax** – Amazon Comprehend parses each word in your document and determines the part of speech for the word\. For example, in the sentence "It is raining today in Seattle," "it" is identified as a pronoun, "raining" is identified as a verb, and "Seattle" is identified as a proper noun\. 
 
 **Amazon Comprehend can examine and analyze documents in these languages:**
 
@@ -523,7 +523,7 @@ delete_bucket(bucket_name)
 
 ![translate](Images/Serverless/translate.png)
 
-Amazon Translate is a neural machine translation service that delivers fast, high-quality, and affordable language translation. Neural machine translation is a form of language translation automation that uses deep learning models to deliver more accurate and more natural sounding translation than traditional statistical and rule-based translation algorithms. Amazon Translate allows you to localize content - such as websites and applications - for international users, and to easily translate large volumes of text efficiently.
+Amazon Translate is a neural machine translation service that delivers fast, high-quality, and affordable language translation. Neural machine translation is a form of language translation automation that uses deep learning models to deliver more accurate and more natural-sounding translation than traditional statistical and rule-based translation algorithms. Amazon Translate allows you to localize content - such as websites and applications - for international users, and to easily translate large volumes of text efficiently.
 
 **Install**
 ```r
@@ -561,7 +561,7 @@ attr(,"TargetLanguageCode")
 
 ![rekognition](Images/Serverless/rekognition.jpg)
 
-Amazon Rekognition makes it easy to add image and video analysis to your applications. You just provide an image or video to the Rekognition API, and the service can identify the objects, people, text, scenes, and activities, as well as detect any inappropriate content. Amazon Rekognition also provides highly accurate facial analysis and facial recognition on images and video that you provide. You can detect, analyze, and compare faces for a wide variety of user verification, people counting, and public safety use cases.
+Amazon Rekognition makes it easy to add image and video analysis to your applications. You just provide an image or video to the Rekognition API, and the service can identify the objects, people, text, scenes, and activities, as well as, can detect any inappropriate content. Amazon Rekognition also provides highly accurate facial analysis and facial recognition on images and video that you provide. You can detect, analyze, and compare faces for a wide variety of user verification, people counting, and public safety use cases.
 
 Amazon Rekognition is based on the same proven, highly scalable, deep learning technology developed by Amazon’s computer vision scientists to analyze billions of images and videos daily, and requires no machine learning expertise to use. Amazon Rekognition is a simple and easy to use API that can quickly analyze any image or video file stored in Amazon S3. Amazon Rekognition is always learning from new data, and we are continually adding new labels and facial recognition features to the service.
 

@@ -13,7 +13,6 @@ print("Say hi again! " + bytestring.decode("utf-8"))
 
 # %%
 
-
 def naivehash(val):
     return str(sum(ord(c) for c in val) % 100)
 
@@ -23,7 +22,7 @@ print("Hash of 'Hello Hashed Message 2!': " + naivehash("Hello Hashed Message 2!
 
 # %%
 # Hashing using SHA-256
-bytesstring = "My message to the world: Say Hällo to a better hash!".encode("utf-8")
+bytestring = "My message to the world: Say Hällo to a better hash!".encode("utf-8")
 print("Original message: ")
 print(bytestring)
 

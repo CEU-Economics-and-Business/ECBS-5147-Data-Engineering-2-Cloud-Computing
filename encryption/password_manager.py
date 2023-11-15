@@ -11,7 +11,7 @@ def encrypt(s: str) -> str:
     pass
 
 
-def init_table() -> None:
+def init_table():
     """
     Returns empty dataframe
     @return: An empty dataframe with these columns: 'user_name' and 'password'
@@ -19,7 +19,7 @@ def init_table() -> None:
     pass
 
 
-def get_encrypted_password_for_user(user_name: str) -> Optional[str]:
+def get_encrypted_password_for_user(df, user_name: str) -> Optional[str]:
     """
     Returns the encrypted password of a user.
     If no user with the specified `user_name` exists, return None
@@ -78,7 +78,7 @@ if __name__ == "__main__":
     # These all must return true
     assert get_encrypted_password_for_user(user_df, "nonexistent_user") is None
     assert get_encrypted_password_for_user(user_df, "first_user") == encrypt(
-        "example_password"
+        "new_example_password"
     )
     assert authenticate_user(user_df, "first_user", "new_example_password")
     assert authenticate_user(user_df, "second_user", "example_password_2")

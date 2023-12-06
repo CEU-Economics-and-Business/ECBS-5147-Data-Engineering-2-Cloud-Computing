@@ -90,7 +90,7 @@ assert s3.list_objects(
 
 assert s3.head_object(
     Bucket=S3_WIKI_BUCKET,
-    Key=f"/datalake/raw/raw-edits-{date.strftime('%Y-%m-%d')}.txt",
+    Key=f"datalake/raw/raw-edits-{date.strftime('%Y-%m-%d')}.txt",
 )
 
 # END OF LAB

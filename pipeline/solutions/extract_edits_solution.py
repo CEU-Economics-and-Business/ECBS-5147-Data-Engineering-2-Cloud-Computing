@@ -18,7 +18,7 @@ url = f"https://wikimedia.org/api/rest_v1/metrics/edited-pages/top-by-edits/en.w
 print(f"Requesting REST API URL: {url}")
 
 # Getting response from Wikimedia API
-wiki_server_response = requests.get(url)
+wiki_server_response = requests.get(url, headers={"User-Agent": "curl/7.68.0"})
 wiki_response_status = wiki_server_response.status_code
 wiki_response_body = wiki_server_response.text
 
@@ -72,7 +72,7 @@ S3_WIKI_BUCKET = ""
 # > A good name can be i.e. "ceu-<<your-name>>-wikidata"
 # > Store the bucket name in the varuable S3_WIKI_BUCKET
 s3 = boto3.client("s3")
-S3_WIKI_BUCKET = "ceu-zoltan-wikidata-test"
+S3_WIKI_BUCKET = "ceu-zoltan-wikidata"
 
 bucket_names = [bucket["Name"] for bucket in s3.list_buckets()["Buckets"]]
 # Only create the bucket if it doesn't exist
@@ -108,7 +108,7 @@ print(
 
 assert s3.head_object(
     Bucket=S3_WIKI_BUCKET,
-    Key=f"/datalake/raw/raw-edits-{date.strftime('%Y-%m-%d')}.txt",
+    Key=f"datalake/raw/raw-edits-{date.strftime('%Y-%m-%d')}.txt",
 )
 
 # END OF LAB

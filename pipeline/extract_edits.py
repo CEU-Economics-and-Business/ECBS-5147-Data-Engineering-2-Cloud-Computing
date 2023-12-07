@@ -18,7 +18,7 @@ url = f"https://wikimedia.org/api/rest_v1/metrics/edited-pages/top-by-edits/en.w
 print(f"Requesting REST API URL: {url}")
 
 # Getting response from Wikimedia API
-wiki_server_response = requests.get(url)
+wiki_server_response = requests.get(url, headers={"User-Agent": "curl/7.68.0"})
 wiki_response_status = wiki_server_response.status_code
 wiki_response_body = wiki_server_response.text
 
@@ -90,7 +90,7 @@ assert s3.list_objects(
 
 assert s3.head_object(
     Bucket=S3_WIKI_BUCKET,
-    Key=f"/datalake/raw/raw-edits-{date.strftime('%Y-%m-%d')}.txt",
+    Key=f"datalake/raw/raw-edits-{date.strftime('%Y-%m-%d')}.txt",
 )
 
 # END OF LAB
@@ -126,7 +126,9 @@ with json_lines_file.open("w") as file:
     file.write(json_lines)
 
 # Upload the JSON file
-s3.upload_file(json_lines_file, S3_WIKI_BUCKET, f"datalake/edits/{json_lines_filename}")
+s3.upload_file(
+    json_lines_file, S3_WIKI_BUCKET, f"datalake/bronze_edits/{json_lines_filename}"
+)
 print(
-    f"Uploaded JSON lines to s3://{S3_WIKI_BUCKET}/datalake/edits/{json_lines_filename}"
+    f"Uploaded JSON lines to s3://{S3_WIKI_BUCKET}/datalake/bronze_edits/{json_lines_filename}"
 )
